@@ -3,9 +3,11 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatNavList } from '@angular/material/list';
+import { MenuComponent } from '../menu/menu.component';
+import { CategoriesComponent } from '../categories/categories.component';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -17,27 +19,14 @@ import { map, shareReplay } from 'rxjs/operators';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule,
     MatIconModule,
     AsyncPipe,
+    MenuComponent,
+    MatNavList,
+    CategoriesComponent,
   ],
 })
 export class HomeComponent {
-  menuItems: Array<{ path: string; label: string }> = [
-    {
-      path: '/',
-      label: 'Home',
-    },
-    {
-      path: '/categories',
-      label: 'Categories',
-    },
-    {
-      path: '/suppliers',
-      label: 'Suppliers',
-    },
-  ];
-
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver
